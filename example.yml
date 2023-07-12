@@ -1,0 +1,7 @@
+---
+# This is an example playbook that calls a role
+- name: Example playbook
+  hosts: all
+
+  roles:
+    - example_role
