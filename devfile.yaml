@@ -12,31 +12,11 @@ components:
     env:
     - name: SHELL
       value: "/bin/zsh"
-    - name: HOME
-      value: "/projects/home"
-    - name: HISTFILE
-      value: "/projects/home/.sh_history"
     - name: VSCODE_DEFAULT_WORKSPACE
       value: "/projects/che-ansible-demo/che-ansible.code-workspace"
-    - name: TESTCONTAINERS_RYUK_DISABLED
-      value: "true"
-    - name: TESTCONTAINERS_CHECKS_DISABLE
-      value: "true"
-    - name: DOCKER_HOST
-      value: "tcp://127.0.0.1:2475"
-    volumeMounts:
-    - name: home
-      path: /projects/home
-    endpoints:
-    - name: kubedock
-      targetPort: 2475
-      exposure: none
 - volume:
     size: 10Gi
   name: projects
-- volume:
-    size: 4Gi
-  name: home
 - name: oc-cli
   container:
     args:
@@ -60,14 +40,6 @@ components:
         USER=$(whoami) ; START_ID=$(( $(id -u)+1 )) ; echo "${USER}:${START_ID}:2147483646" > /etc/subuid ; echo "${USER}:${START_ID}:2147483646" > /etc/subgid
     memoryLimit: 64M
 commands:
-- exec:
-    commandLine: "kubedock server --port-forward"
-    component: dev-tools
-    group:
-      kind: run
-    label: Kubedock
-    workingDir: '/'
-  id: kubedock
 - apply:
     component: oc-cli
     label: Copy OpenShift CLI
@@ -80,3 +52,4 @@ events:
   preStart:
     - cp-oc-cli
     - set-userns
+
