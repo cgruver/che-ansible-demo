@@ -3,7 +3,7 @@ ARG USER_HOME_DIR="/home/user"
 ARG WORK_DIR="/projects"
 ENV HOME=${USER_HOME_DIR}
 ENV BUILDAH_ISOLATION=chroot
-ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+ENV PATH=${PATH}:/projects/bin
 COPY --chown=0:0 entrypoint.sh /
 RUN microdnf --disableplugin=subscription-manager install -y openssl compat-openssl11 libbrotli git tar gzip zip xz unzip which shadow-utils bash zsh vi wget jq podman buildah skopeo python3-pip python3-devel; \
   microdnf update -y ; \
@@ -29,3 +29,4 @@ RUN microdnf --disableplugin=subscription-manager install -y openssl compat-open
   USER 10001
 WORKDIR ${WORK_DIR}
 ENTRYPOINT [ "/entrypoint.sh" ]
+CMD [ "tail", "-f", "/dev/null" ]
