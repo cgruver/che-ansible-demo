@@ -8,7 +8,7 @@ components:
   attributes:
     pod-overrides: {"metadata": {"annotations": {"io.kubernetes.cri-o.Devices":"/dev/fuse","io.openshift.podman-fuse":""}}}
   container: 
-    image: quay.io/cgruver0/che/che-dev-image:fuse
+    image: quay.io/cgruver0/che/che-ansible-demo:latest
     memoryLimit: 6Gi
     mountSources: true
     env:
@@ -33,7 +33,7 @@ components:
     memoryLimit: 256M
 - name: user-ns
   container:
-    image: quay.io/cgruver0/che/che-dev-image:fuse
+    image: quay.io/cgruver0/che/che-ansible-demo:latest
     command:
       - /bin/bash
     args:
