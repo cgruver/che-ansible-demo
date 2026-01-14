@@ -2,7 +2,22 @@ schemaVersion: 2.2.0
 attributes:
   controller.devfile.io/storage-type: per-workspace
 metadata:
-  name: che-ansible-workspace
+  name: dev-spaces-ansible-workspace
+projects:
+  - name: dev-spaces-ansible-demo
+    git:
+      remotes:
+        origin: https://github.com/cgruver/dev-spaces-ansible-demo.git
+      checkoutFrom:
+        remote: origin
+        revision: main
+  - name: starbase-vanilla-minecraft-deploy
+    git:
+      remotes:
+        origin: https://github.com/cgruver/Starbase-Vanilla-Minecraft-Deploy.git
+      checkoutFrom:
+        remote: origin
+        revision: main
 components:
 - name: dev-tools
   container: 
