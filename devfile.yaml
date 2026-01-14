@@ -5,8 +5,6 @@ metadata:
   name: che-ansible-workspace
 components:
 - name: dev-tools
-  attributes:
-    pod-overrides: {"metadata": {"annotations": {"io.kubernetes.cri-o.Devices":"/dev/fuse","io.openshift.podman-fuse":""}}}
   container: 
     image: nexus.clg.lab:5002/dev-spaces/ops-tools:latest
     memoryLimit: 6Gi
