@@ -1,8 +1,8 @@
 {
 	"folders": [
 		{
-			"name": "che-ansible-demo",
-			"path": "/projects/che-ansible-demo"
+			"name": "dev-spaces-ansible-demo",
+			"path": "/projects/dev-spaces-ansible-demo"
 		}
 	],
 	"extensions": {
