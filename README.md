@@ -6,9 +6,7 @@ This capability will be especially useful for developers and engineers who do no
 
 ## Set Up For Demo
 
-Before you can run this, you need access to an OpenShift cluster that has Dev Spaces installed and is configured for a nested container runtime.
-
-Follow the guide here: [Eclipse Che / OpenShift Dev Spaces - Podman With Fuse Overlay](https://upstreamwithoutapaddle.com/blog%20post/2023/08/10/Podman-In-Dev-Spaces-With-Fuse-Overlay.html)
+Before you can run this, you need access to an OpenShift cluster that has Dev Spaces installed and is configured for a nested container runtime.  Minimum OCP version is 4.20, Minimum Dev Spaces version is 3.25
 
 ## Run The Demo
 
