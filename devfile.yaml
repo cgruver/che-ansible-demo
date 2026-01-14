@@ -8,8 +8,11 @@ components:
   attributes:
     pod-overrides: {"metadata": {"annotations": {"io.kubernetes.cri-o.Devices":"/dev/fuse","io.openshift.podman-fuse":""}}}
   container: 
-    image: quay.io/cgruver0/che/che-ansible-demo:latest
+    image: nexus.clg.lab:5002/dev-spaces/ops-tools:latest
     memoryLimit: 6Gi
+    memoryRequest: 1Gi
+    cpuLimit: 1000m
+    cpuRequest: 100m
     mountSources: true
     env:
     - name: SHELL
@@ -17,41 +20,32 @@ components:
     - name: VSCODE_DEFAULT_WORKSPACE
       value: "/projects/che-ansible-demo/che-ansible.code-workspace"
 - volume:
-    size: 10Gi
+    size: 20Gi
   name: projects
-- name: oc-cli
+- name: prep-workspace
   container:
     args:
       - '-c'
       - >-
-        mkdir -p /projects/bin && cp /usr/bin/oc /projects/bin/oc && cp /usr/bin/kubectl /projects/bin/kubectl
+        mkdir -p /projects/bin && cp /usr/bin/oc /projects/bin/oc && cp /usr/bin/kubectl /projects/bin/kubectl && if [[ -f ${HOME}/.kube/config ]]; then rm ${HOME}/.kube/config; fi
     command:
       - /bin/bash
     image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
-    sourceMapping: /projects
     mountSources: true
-    memoryLimit: 256M
-- name: user-ns
-  container:
-    image: quay.io/cgruver0/che/che-ansible-demo:latest
-    command:
-      - /bin/bash
-    args:
-      - '-c'
-      - >-
-        USER=$(whoami) ; START_ID=$(( $(id -u)+1 )) ; echo "${USER}:${START_ID}:2147483646" > /etc/subuid ; echo "${USER}:${START_ID}:2147483646" > /etc/subgid
-    memoryLimit: 64M
+    sourceMapping: /projects
+    memoryRequest: 128Mi
+    memoryLimit: 256Mi
+    cpuRequest: 10m
+    cpuLimit: 200m
+    env:
+    - name: HOME
+      value: "/projects/home"
 commands:
 - apply:
-    component: oc-cli
+    component: prep-workspace
     label: Copy OpenShift CLI
-  id: cp-oc-cli
-- apply:
-    component: user-ns
-    label: Set User Namespace
-  id: set-userns
+  id: prep-workspace
 events:
   preStart:
-    - cp-oc-cli
-    - set-userns
+    - prep-workspace
 
