@@ -1,5 +1,7 @@
 # Demo Of Ansible Development In OpenShift Dev Spaces
 
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://devspaces.apps.region-03.clg.lab/#https://github.com/cgruver/dev-spaces-ansible-demo)
+
 This repo contains a very simple Ansible example with an Eclipse Che / Dev Spaces `devfile.yaml` to demonstrate how Ansible development can be done in OpenShift Dev Spaces / Eclipse Che.
 
 This capability will be especially useful for developers and engineers who do not have access to a container runtime on their local workstation.

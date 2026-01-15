@@ -3,6 +3,10 @@
 		{
 			"name": "dev-spaces-ansible-demo",
 			"path": "/projects/dev-spaces-ansible-demo"
+		},
+		{
+			"name": "starbase-vanilla-minecraft-deploy",
+			"path": "/projects/starbase-vanilla-minecraft-deploy"
 		}
 	],
 	"extensions": {

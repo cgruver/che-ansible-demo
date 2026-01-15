@@ -21,7 +21,8 @@ projects:
 components:
 - name: dev-tools
   container: 
-    image: nexus.clg.lab:5002/dev-spaces/ops-tools:latest
+    # image: nexus.clg.lab:5002/dev-spaces/ops-tools:latest
+    image: quay.io/cgruver0/che/ops-tools:latest
     memoryLimit: 6Gi
     memoryRequest: 1Gi
     cpuLimit: 1000m
