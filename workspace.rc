@@ -1,0 +1,3 @@
+export K8S_AUTH_API_KEY="$(oc whoami -t)"
+CLUSTER_ADDR=$(echo ${CHE_DASHBOARD_URL} | cut -d"." -f3-)
+export K8S_AUTH_HOST="https://api.${CLUSTER_ADDR}:6443"
