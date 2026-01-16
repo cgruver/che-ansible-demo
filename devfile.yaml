@@ -11,10 +11,10 @@ projects:
       checkoutFrom:
         remote: origin
         revision: main
-  - name: starbase-vanilla-minecraft-deploy
+  - name: ansible-minecraft-deploy
     git:
       remotes:
-        origin: https://github.com/cgruver/Starbase-Vanilla-Minecraft-Deploy.git
+        origin: https://github.com/cgruver/Ansible-MC-Deployment-Demo.git
       checkoutFrom:
         remote: origin
         revision: main
